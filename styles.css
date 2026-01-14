@@ -1,39 +1,44 @@
-/* --- 1. VARIABLES --- */
+/* --- 1. IMPORT GOOGLE FONT --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+
+/* --- 2. COLOR VARIABLES --- */
 :root {
-    --primary-color: #FFFEFC;    /* School Bus Yellow */
-    --secondary-color: #8F00FF;  /* Purple */
-    --text-color: #F5F5DC;       /* BEIGE */
-    --dark-bg: #F8EEEC;          /* Deep Dark Brown for contrast areas */
-    --hover-color: #1338BE;
+    --primary-color: #FFFEFC;    /* Bone White */
+    --secondary-color: #8F00FF;  /* Electric Purple (Main Background) */
+    --text-color: #F5F5DC;       /* Pure Beige (Text) */
+    --card-bg: #F8EEEC;          /* Soft Linen (Contrast Areas) */
+    --accent-color: #1338BE;     /* Cobalt Blue */
+    --hover-color: #ffffff;
 }
 
-/* --- 2. GENERAL STYLING --- */
+/* --- 3. GENERAL STYLING --- */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cinzel', serif; /* Entire site now uses Cinzel */
     margin: 0;
+    padding: 0;
     background-color: var(--secondary-color);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
-    perspective: 1000px;
-    /* Subtle shadow so yellow text is visible on beige background */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    /* Subtle shadow to help Beige text pop against the Purple */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* --- 3. HEADER & NAV --- */
+/* --- 4. HEADER & NAVIGATION --- */
 header {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    background: rgba(26, 22, 0, 0.95); /* Dark bar so yellow links pop */
+    background: rgba(19, 56, 190, 0.9); /* Cobalt Blue Background */
     padding: 1rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 nav {
@@ -48,21 +53,24 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
+    margin: 0;
 }
 
 nav ul li a {
-    color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #fff; /* White hover flash for interaction */
+    color: var(--text-color);
+    text-shadow: 0 0 10px white;
 }
 
-/* --- 4. HERO SECTION --- */
+/* --- 5. HERO SECTION --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -70,25 +78,29 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 80px;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .hero-text h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
     color: var(--primary-color);
-    /* Heavy shadow to ensure the yellow title is the star */
-    text-shadow: 0 0 20px rgba(255, 216, 0, 0.4), 3px 3px 10px rgba(0,0,0,0.9);
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 4px 4px 15px rgba(0,0,0,0.6);
 }
 
 .hero-text p {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-    opacity: 1;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .hero-image {
@@ -98,133 +110,101 @@ nav ul li a:hover {
     background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
     background-position: center;
     background-size: cover;
-    opacity: 0.15; /* Low opacity so beige shines through */
-    animation: zoomInOut 8s ease-in-out infinite;
-}
-
-/* --- 5. ABOUT SECTION --- */
-.about {
-    background-color: var(--secondary-color);
-    text-align: center;
-    padding: 6rem 0;
-}
-
-.about p {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2rem;
+    opacity: 0.25; 
+    animation: zoomInOut 12s ease-in-out infinite;
 }
 
 /* --- 6. PROJECTS SECTION --- */
 .projects {
-    text-align: center;
+    padding: 8rem 2rem;
     background-color: var(--secondary-color);
-    padding: 6rem 0;
+    text-align: center;
 }
 
 .project-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 4rem auto 0;
 }
 
 .project-card {
-    background-color: var(--dark-bg); /* Dark cards to make yellow text readable */
-    border-radius: 10px;
+    background-color: var(--card-bg); /* Soft Linen light background */
+    border-radius: 0; /* Sharp edges look better with Cinzel */
+    border: 1px solid var(--accent-color);
     overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+    color: #1a1a1a; /* Dark text for readability on light cards */
+    text-shadow: none;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-15px);
 }
 
 .project-card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
+    filter: sepia(30%);
 }
 
 .project-card h3 {
-    padding: 1rem;
-    color: var(--primary-color);
+    font-size: 1.8rem;
+    padding: 1.5rem 1rem 0.5rem;
+    color: var(--accent-color); /* Cobalt Blue Title */
 }
 
 .project-card p {
-    padding: 0 1rem 1rem;
-    color: var(--text-color);
-}
-
-.project-card a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-    padding-bottom: 1rem;
-    display: inline-block;
+    padding: 0 1.5rem 1.5rem;
+    font-family: serif; /* Using standard serif for long text readability */
 }
 
 /* --- 7. CONTACT SECTION --- */
 .contact {
-    padding: 6rem 0;
-    background: linear-gradient(to bottom, var(--secondary-color), #e3e3c3);
+    padding: 10rem 2rem;
+    background: linear-gradient(to bottom, var(--secondary-color), #5e00a8);
     text-align: center;
 }
 
 .contact-container {
-    max-width: 600px;
+    max-width: 650px;
     margin: auto;
-    background: var(--dark-bg);
-    padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.contact h2 {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    background: #fff;
-    color: #000;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4rem;
+    border: 2px solid var(--primary-color);
+    backdrop-filter: blur(5px);
 }
 
 .contact-form button {
-    background-color: var(--primary-color);
-    color: #000; /* Black text on yellow button */
-    padding: 12px 24px;
-    margin-top: 20px;
-    font-weight: bold;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 45px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: 0.4s;
 }
 
 .contact-form button:hover {
-    transform: scale(1.05);
-    background-color: var(--hover-color);
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 20px white;
 }
 
-/* --- 8. ANIMATIONS --- */
+/* --- 8. KEYFRAME ANIMATIONS --- */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes zoomInOut {
-    0% { transform: scale(1); }
+    0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
 }
-
-
-
