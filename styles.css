@@ -1,160 +1,179 @@
-/* --- 1. FONTS & RESET --- */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap');
+/* --- 1. CLEAN FONT IMPORT --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;500;700&display=swap');
 
 :root {
-    --bg-main: #FFFADA;           /* Warm Cream Base */
-    --text-dark: #2D3436;         /* Charcoal Slate */
-    --accent-color: #4A90E2;      /* Professional Steel Blue */
-    --glass-white: rgba(255, 255, 255, 0.45);
-    --glow-border: rgba(255, 255, 255, 0.8);
-}
-
-/* FIX: This makes sure when you highlight text, it's not that ugly blue */
-::selection {
-    background: var(--accent-color);
-    color: white;
+/* Background updated to your Cream color */
+--bg-main: #FFFADA;
+--text-dark: #2D3436; /* Professional Slate */
+--accent-color: #4A90E2; /* Professional Soft Blue */
+--glass-white: rgba(255, 255, 255, 0.45); /* High transparency */
+--glow-border: rgba(255, 255, 255, 0.8); /* The "Glowing" edge */
 }
 
 /* --- 2. GENERAL STYLING --- */
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background-color: var(--bg-main);
-    color: var(--text-dark);
-    line-height: 1.8;
-    overflow-x: hidden;
+font-family: 'Inter', sans-serif;
+margin: 0;
+background-color: var(--bg-main);
+color: var(--text-dark);
+line-height: 1.8;
 }
 
 h1, h2, h3, nav a {
-    font-family: 'Cinzel', serif;
-}
-
-/* FIX: Globally removing the "Default Blue" from all links */
-a {
-    color: var(--text-dark);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-a:hover {
-    color: var(--accent-color);
+font-family: 'Cinzel', serif; /* Headers keep the classy serif look */
 }
 
 /* --- 3. GLOWING GLASS HEADER --- */
 header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background: var(--glass-white);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 1000;
-    border-bottom: 1px solid var(--glow-border);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+position: fixed;
+width: 100%;
+top: 0;
+background: var(--glass-white);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+z-index: 1000;
+/* Glow effect: Thin white border + light shadow */
+border-bottom: 1px solid var(--glow-border);
+box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
 nav {
-    max-width: 1100px;
-    margin: auto;
-    padding: 1rem 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+max-width: 1100px;
+margin: auto;
+padding: 1rem 20px;
+display: flex;
+justify-content: space-between;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 3rem;
-    margin: 0;
+list-style: none;
+display: flex;
+gap: 3rem;
 }
 
 nav ul li a {
-    font-weight: 700;
-    letter-spacing: 1px;
+text-decoration: none;
+color: var(--text-dark);
+font-weight: 700;
+transition: 0.3s;
 }
 
 /* --- 4. HERO SECTION --- */
 .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+position: relative;
+overflow: hidden;
 }
 
 .hero-text {
-    position: relative;
-    z-index: 2;
-    animation: fadeInUp 1.2s ease-out;
+position: relative;
+z-index: 2;
+animation: fadeInUp 1.2s ease-out;
 }
 
 .hero-text h1 {
-    font-size: 4.5rem;
-    color: var(--text-dark);
-    margin: 0;
-    /* Adding a slight letter spacing for a "Super Cool" look */
-    letter-spacing: -2px; 
+font-size: 4rem;
+color: var(--text-dark);
+margin: 0;
 }
 
 .hero-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.08;
-    filter: sepia(20%);
-    animation: zoomInOut 15s ease-in-out infinite;
+position: absolute;
+width: 100%;
+height: 100%;
+background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
+background-size: cover;
+background-position: center;
+opacity: 0.08;
+filter: sepia(20%); /* Blends with the cream background */
+animation: zoomInOut 15s ease-in-out infinite;
 }
 
 /* --- 5. GLOWING PROJECT CARDS --- */
 .projects {
-    padding: 100px 20px;
+padding: 100px 20px;
 }
 
 .project-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    max-width: 1100px;
-    margin: auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2.5rem;
+max-width: 1100px;
+margin: auto;
 }
 
 .project-card {
-    background: var(--glass-white);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--glow-border);
-    border-radius: 24px;
-    padding: 15px; /* Slightly more padding */
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05),
-                0 0 15px rgba(255, 255, 255, 0.6);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+background: var(--glass-white);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+
+/* THE GLOW EFFECT */
+border: 1px solid var(--glow-border);
+border-radius: 24px;
+padding: 10px;
+box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05),
+0 0 15px rgba(255, 255, 255, 0.6); /* Inner soft glow */
+
+transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
-                0 0 25px rgba(255, 255, 255, 0.9);
+transform: translateY(-10px) scale(1.02);
+background: rgba(255, 255, 255, 0.8);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+0 0 25px rgba(255, 255, 255, 0.9); /* Stronger glow on hover */
 }
 
 .project-card img {
-    width: 100%;
-    border-radius: 18px;
-    height: 220px;
-    object-fit: cover;
+width: 100%;
+border-radius: 18px;
+height: 200px;
+object-fit: cover;
 }
 
-/* Adding a cool "Tag" style for your project tech stack */
-.project-tag {
-    display: inline-block;
-    background: rgba(0,0,0,0.05);
-    padding: 2px 10px;
-    border-radius: 50px;
-    font-size: 11px;
-    font-weight:
+/* --- 6. GLOWING CONTACT CONTAINER --- */
+.contact-container {
+max-width: 500px;
+margin: 100px auto;
+background: var(--glass-white);
+padding: 3rem;
+border-radius: 35px;
+border: 1px solid var(--glow-border);
+backdrop-filter: blur(20px);
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05),
+0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.contact-form button {
+background: var(--text-dark);
+color: white;
+width: 100%;
+padding: 18px;
+border: none;
+border-radius: 15px;
+font-weight: 600;
+font-family: 'Inter', sans-serif;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.contact-form button:hover {
+background: var(--accent-color);
+box-shadow: 0 0 20px var(--accent-color);
+transform: translateY(-2px);
+}
+
+/* --- 7. ANIMATIONS --- */
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomInOut {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.1); }
+}
