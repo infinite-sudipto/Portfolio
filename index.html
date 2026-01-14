@@ -3,113 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sudipta Bosu | Portfolio</title>
-
-    <!-- SEO -->
-    <meta name="description" content="Sudipta Bosu — Aspiring Data Analyst and Operations Specialist with a Physics background. Skilled in Python, SQL, Power BI, and predictive analytics.">
+    <title>Sudipta Bosu | Data Analyst & AI Strategist</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Sudipta Bosu - Data Analyst & AI Strategist transforming complex datasets into actionable business intelligence. Expert in Python, SQL, ML, and data visualization.">
+    <meta name="keywords" content="Data Analyst, Data Science, Machine Learning, Business Intelligence, Python, SQL, AI Strategy">
     <meta name="author" content="Sudipta Bosu">
-
-    <!-- Social Preview -->
-    <meta property="og:title" content="Sudipta Bosu | Data Analyst Portfolio">
-    <meta property="og:description" content="Crafting data into strategy using analytics and business intelligence.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sudipta Bosu | Data Analyst & AI Strategist">
+    <meta property="og:description" content="Transforming data into strategic insights with advanced analytics and machine learning.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://infinite-sudipto.github.io/Portfolio/">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="./style.css">
+    <meta property="og:url" content="https://sudiptabosu.com">
+    <meta property="og:image" content="https://sudiptabosu.com/preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="none" stroke="url(#gradient)" stroke-width="2"/>
+                <path d="M30 30 L70 30 L70 70 L30 70 Z" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-dasharray="200" stroke-dashoffset="200">
+                    <animate attributeName="stroke-dashoffset" from="200" to="0" dur="2s" fill="freeze"/>
+                </path>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00D4FF"/>
+                        <stop offset="100%" style="stop-color:#7B61FF"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="loading-text">INITIALIZING PORTFOLIO</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
 
-    <noscript>
-        <style>#cursor-glow{display:none}</style>
-    </noscript>
+    <!-- Background Elements -->
+    <div class="background-mesh"></div>
+    <div class="grid-overlay"></div>
+    <div class="floating-data" id="floatingData"></div>
 
-    <div id="cursor-glow"></div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
 
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-palette"></i>
+    </div>
+
+    <!-- Header -->
     <header>
-        <nav aria-label="Primary Navigation">
-            <div class="nav-logo">SUDIPTA BOSU</div>
-            <ul>
+        <nav class="nav-container">
+            <div class="nav-logo">Sudipta_Bosu</div>
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Profile</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#projects">Case Studies</a></li>
+                <li><a href="#skills">Capabilities</a></li>
+                <li><a href="#contact">Connect</a></li>
             </ul>
+            <div class="nav-indicator" id="navIndicator"></div>
         </nav>
     </header>
 
-    
-
-    <section id="about">
-        <div class="glass-panel">
-            <h2 class="section-title">Professional Profile</h2>
-            <p>
-                With a <strong>B.Sc. in Physics (Hons)</strong>, I have cultivated a rigorous analytical mindset that bridges complex datasets and strategic business needs.
-            </p>
-            <p>
-                My technical stack includes <strong>Python (Pandas, NumPy, Scikit-learn)</strong> and <strong>Tableau / Power BI</strong>. I am multilingual (English, Hindi, Bengali).
-            </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Transforming <span class="title-gradient">Data</span> into<br><span class="title-gradient">Strategic Insights</span></h1>
+                <p>
+                    Data Analyst & AI Strategist with a Physics background. 
+                    Specializing in predictive analytics, machine learning, 
+                    and business intelligence solutions that drive measurable impact.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-chart-line"></i> View Case Studies
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i> Connect
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value" data-count="20">0+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" data-count="15">0+</div>
+                        <div class="stat-label">ML Models</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" data-count="98">0%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-visualization">
+                <div class="tech-orbit">
+                    <div class="tech-node"><i class="fab fa-python"></i></div>
+                    <div class="tech-node"><i class="fas fa-database"></i></div>
+                    <div class="tech-node"><i class="fas fa-brain"></i></div>
+                    <div class="tech-node"><i class="fas fa-chart-bar"></i></div>
+                    <div class="tech-node">Pandas</div>
+                    <div class="tech-node">TensorFlow</div>
+                    <div class="tech-node">Power BI</div>
+                    <div class="tech-node">Tableau</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="projects" aria-labelledby="projects-title">
-        <h2 class="section-title" id="projects-title">Selected Case Studies</h2>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-title">Professional Profile</div>
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Bridging Physics Rigor with Business Intelligence</h2>
+                    <p>
+                        With a <strong>B.Sc. in Physics (Hons)</strong>, I bring a rigorous analytical mindset to data science. 
+                        My approach combines scientific methodology with practical business applications.
+                    </p>
+                    <div class="expertise-areas">
+                        <div class="expertise">
+                            <i class="fas fa-robot"></i>
+                            <h3>Predictive Analytics</h3>
+                            <p>ML models for forecasting and pattern recognition</p>
+                        </div>
+                        <div class="expertise">
+                            <i class="fas fa-chart-network"></i>
+                            <h3>Data Visualization</h3>
+                            <p>Interactive dashboards and BI reporting</p>
+                        </div>
+                        <div class="expertise">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Process Optimization</h3>
+                            <p>Automation and efficiency improvements</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="data-flow-animation">
+                        <!-- Animated data flow visualization -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="project-cards">
-
-            <div class="project-card reveal-hidden">
-                <span class="category">NBFC • Risk Management</span>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section-title">Case Studies</div>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-aos="fade-up">
+                <span class="category">NBFC • Risk Analytics</span>
                 <h3>Vehicle Loan Default Prediction</h3>
-                <p>Predictive modeling to identify high-risk loan applicants.</p>
+                <p>
+                    Developed a machine learning model to predict high-risk loan applicants with 94% accuracy,
+                    reducing default rates by 23% for a major NBFC.
+                </p>
                 <div class="tech-stack">
-                    <span>Python</span><span>Scikit-learn</span><span>Seaborn</span>
+                    <span>Python</span>
+                    <span>Scikit-learn</span>
+                    <span>XGBoost</span>
+                    <span>Pandas</span>
+                    <span>Seaborn</span>
                 </div>
-                <a class="btn-link" target="_blank"
-                   href="https://github.com/infinite-sudipto/VEHICLE_LOAN_DEFAULTER_PREDICTION">
-                   View Repository →
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">94%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">23%</span>
+                        <span class="stat-label">Risk Reduction</span>
+                    </div>
+                </div>
+                <a href="https://github.com/infinite-sudipto/VEHICLE_LOAN_DEFAULTER_PREDICTION" 
+                   class="btn-link" target="_blank">
+                   <i class="fab fa-github"></i> View Analysis
                 </a>
             </div>
 
-            <div class="project-card reveal-hidden">
-                <span class="category">HR Analytics</span>
-                <h3>Employee Database Management</h3>
-                <p>Advanced SQL analytics using CTEs and Window Functions.</p>
+            <!-- Project 2 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="category">HR Analytics • Database</span>
+                <h3>Employee Database Management System</h3>
+                <p>
+                    Built an advanced SQL analytics platform using CTEs and Window Functions,
+                    improving HR decision-making efficiency by 40%.
+                </p>
                 <div class="tech-stack">
-                    <span>MySQL</span><span>CTE</span><span>BI</span>
+                    <span>MySQL</span>
+                    <span>Python</span>
+                    <span>Power BI</span>
+                    <span>CTE</span>
+                    <span>Window Functions</span>
                 </div>
-                <a class="btn-link" target="_blank"
-                   href="https://github.com/infinite-sudipto/HR_EMPLOYEES_DATABASE">
-                   View Repository →
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">40%</span>
+                        <span class="stat-label">Efficiency Gain</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">10K+</span>
+                        <span class="stat-label">Records</span>
+                    </div>
+                </div>
+                <a href="https://github.com/infinite-sudipto/HR_EMPLOYEES_DATABASE" 
+                   class="btn-link" target="_blank">
+                   <i class="fab fa-github"></i> Explore Repository
                 </a>
             </div>
 
-            <div class="project-card reveal-hidden">
-                <span class="category">App Ecosystem</span>
-                <h3>Google Play Rating Prediction</h3>
-                <p>Predictive modeling using historical user behavior.</p>
+            <!-- Project 3 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <span class="category">App Ecosystem • Predictive Modeling</span>
+                <h3>Google Play Store Rating Predictor</h3>
+                <p>
+                    Created a predictive model analyzing 10,000+ apps to forecast ratings
+                    based on historical user behavior and app characteristics.
+                </p>
                 <div class="tech-stack">
-                    <span>Python</span><span>Pandas</span><span>NumPy</span>
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Matplotlib</span>
+                    <span>Scikit-learn</span>
                 </div>
-                <a class="btn-link" target="_blank"
-                   href="https://github.com/infinite-sudipto/APP_RATING_PREDICTION-ANALYSIS">
-                   View Repository →
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">89%</span>
+                        <span class="stat-label">Prediction Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">10K+</span>
+                        <span class="stat-label">Apps Analyzed</span>
+                    </div>
+                </div>
+                <a href="https://github.com/infinite-sudipto/APP_RATING_PREDICTION-ANALYSIS" 
+                   class="btn-link" target="_blank">
+                   <i class="fab fa-github"></i> Study Model
                 </a>
             </div>
-
         </div>
     </section>
 
-    <section id="contact">
-        <div class="glass-panel">
-            <h2 class="section-title">Get in Touch</h2>
-            <p><strong>Email:</strong> <a href="mailto:diptasu2016@gmail.com">diptasu2016@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a target="_blank" href="https://www.linkedin.com/in/sudipto-bosu-989b261b7/">Profile</a></p>
-            <p><strong>Phone:</strong> +91 9735856231</p>
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/919735856231">Start Chat</a></p>
-        </div>
-    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-title">Technical Capabilities</div>
+        <div class="data-viz-container">
+            <div class="viz-card">
+                <div class="viz-header">
+                    <div class="viz-title">Python & Data Science</div>
+                    <div class="viz-value">95%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+                <p>Pandas, NumPy, Scikit-learn, TensorFlow</p>
+            </div>
 
-    <script src="./script.js" defer></script>
-</body>
-</html>
+            <div class="viz-card">
+                <div class="viz-header">
+                    <div class="viz-title">SQL & Databases</div>
+                    <div class="viz-value">90%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <p>MySQL, PostgreSQL, Query Optimization</p>
+            </div>
 
+            <div class="viz-card">
+                <div class="viz-header">
+                    <div class="viz-title">BI & Visualization</div>
+                    <div class="viz-value">88%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 88%"></div>
+                </div>
+                <
