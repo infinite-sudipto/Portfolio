@@ -1,7 +1,7 @@
 /* --- 1. VARIABLES --- */
 :root {
-    --primary-color: #FFD800;    /* School Bus Yellow */
-    --secondary-color: #F5F5DC;  /* Pure Beige */
+    --primary-color: #F5F5DC;    /* School Bus Yellow */
+    --secondary-color: #FEDC56;  /* Pure Beige */
     --text-color: #FFD800;       /* School Bus Yellow (Replaced White) */
     --dark-bg: #1a1600;          /* Deep Dark Brown for contrast areas */
     --hover-color: #e6c300;
@@ -225,3 +225,4 @@ nav ul li a:hover {
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+
