@@ -313,28 +313,175 @@ document.addEventListener('DOMContentLoaded', () => {
     // ======================
     // 11. INITIALIZE ALL EFFECTS
     // ======================
-    function initializeAllEffects() {
-        createDataParticles();
-        animateCounters();
-        updateNavIndicator();
-        
-        // Start scroll listener for nav indicator
-        window.addEventListener('scroll', updateNavIndicator);
-        
-        // Initialize typing effect
-        initTypingEffect();
-        
-        // Update copyright year
-        updateCopyrightYear();
-    }
+   function initializeAllEffects() {
+    createDataParticles();
+    animateCounters();
+    updateNavIndicator();
+    initAdvancedTypingAnimation(); // ← CHANGED
+    updateCopyrightYear();
+    
+    window.addEventListener('scroll', updateNavIndicator);
+}
 
     // ======================
     // 12. TYPING EFFECT
     // ======================
-    function initTypingEffect() {
-        const titles = ['Data Analyst', 'ML Engineer', 'BI Specialist', 'AI Strategist'];
-        const titleElement = document.querySelector('.title-gradient');
-        if (!titleElement) return;
+    // ======================
+// 12. ADVANCED TYPING ANIMATION
+// ======================
+function initAdvancedTypingAnimation() {
+    // Text sequences for animation
+    const sequences = {
+        line1: [
+            "Strategic Data Analysis",
+            "Predictive Analytics",
+            "Business Intelligence",
+            "Data-Driven Insights"
+        ],
+        line2: [
+            "Clear Strategic Decisions",
+            "Actionable Intelligence",
+            "Measurable Results",
+            "Informed Strategies"
+        ]
+    };
+
+    const typingText1 = document.getElementById('typing-text-1');
+    const typingText2 = document.getElementById('typing-text-2');
+    const fadeText = document.getElementById('fade-text');
+
+    // Check if elements exist
+    if (!typingText1 || !typingText2 || !fadeText) {
+        console.log('Animation elements not found');
+        return;
+    }
+
+    // Animation timeline
+    setTimeout(() => {
+        // Start first line animation
+        startTypingAnimation(typingText1, sequences.line1, {
+            typingSpeed: 80,
+            deleteSpeed: 40,
+            pauseAfterType: 1500,
+            pauseAfterDelete: 500,
+            cursorStyle: '|',
+            cursorAnimation: 'blink'
+        });
+
+        // Start second line animation after delay
+        setTimeout(() => {
+            startTypingAnimation(typingText2, sequences.line2, {
+                typingSpeed: 90,
+                deleteSpeed: 45,
+                pauseAfterType: 1800,
+                pauseAfterDelete: 600,
+                cursorStyle: '▌',
+                cursorAnimation: 'pulse'
+            });
+        }, 2000);
+
+    }, 1000);
+
+    // Tagline effects
+    setTimeout(() => {
+        fadeText.style.animation = 'fadeIn 1s ease forwards';
+        
+        // Add hover effect to tagline
+        fadeText.addEventListener('mouseenter', () => {
+            fadeText.style.transform = 'scale(1.05)';
+            fadeText.style.transition = 'transform 0.3s ease';
+        });
+        
+        fadeText.addEventListener('mouseleave', () => {
+            fadeText.style.transform = 'scale(1)';
+        });
+    }, 4000);
+}
+
+// Advanced typing animation function
+function startTypingAnimation(element, wordList, options = {}) {
+    const {
+        typingSpeed = 100,
+        deleteSpeed = 50,
+        pauseAfterType = 2000,
+        pauseAfterDelete = 800,
+        cursorStyle = '|',
+        cursorAnimation = 'blink'
+    } = options;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+
+    // Set cursor style
+    element.dataset.cursor = cursorStyle;
+    element.classList.add(`cursor-${cursorAnimation}`);
+
+    function type() {
+        if (isPaused) return;
+
+        const currentWord = wordList[wordIndex];
+        
+        if (!isDeleting) {
+            // Typing forward
+            if (charIndex <= currentWord.length) {
+                element.textContent = currentWord.substring(0, charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                // Finished typing word
+                isDeleting = true;
+                isPaused = true;
+                
+                // Add success effect
+                element.classList.add('typing-complete');
+                
+                setTimeout(() => {
+                    isPaused = false;
+                    element.classList.remove('typing-complete');
+                    setTimeout(type, deleteSpeed);
+                }, pauseAfterType);
+            }
+        } else {
+            // Deleting
+            if (charIndex >= 0) {
+                element.textContent = currentWord.substring(0, charIndex);
+                charIndex--;
+                setTimeout(type, deleteSpeed);
+            } else {
+                // Finished deleting
+                isDeleting = false;
+                isPaused = true;
+                
+                // Move to next word
+                wordIndex = (wordIndex + 1) % wordList.length;
+                
+                setTimeout(() => {
+                    isPaused = false;
+                    setTimeout(type, typingSpeed);
+                }, pauseAfterDelete);
+            }
+        }
+    }
+
+    // Start animation
+    type();
+
+    // Add interactive pause on hover
+    element.addEventListener('mouseenter', () => {
+        isPaused = true;
+        element.classList.add('typing-paused');
+    });
+
+    element.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+            isPaused = false;
+            element.classList.remove('typing-paused');
+            type();
+        }, 500);
+    });
+}
         
         let currentIndex = 0;
         let charIndex = 0;
@@ -526,3 +673,4 @@ console.log('%c👋 Welcome to Sudipta Bosu\'s Portfolio!', 'color: #00D4FF; fon
 console.log('%c💻 Built with cutting-edge web technologies', 'color: #7B61FF; font-size: 14px;');
 console.log('%c📊 Data Analyst & AI Strategist | Physics Background', 'color: #00FF88; font-size: 14px;');
 console.log('%c🔗 GitHub: https://github.com/infinite-sudipto', 'color: #FFFFFF; font-size: 12px;');
+
