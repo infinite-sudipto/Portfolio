@@ -204,11 +204,17 @@ header {
 .nav-logo {
     font-size: 1.8rem;
     font-weight: 700;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #F9E076;  /* Your gold color - SOLID, not transparent */
+    font-family: 'Space Grotesk', sans-serif;
     position: relative;
+    text-decoration: none;
+}
+
+/* Optional: Add a nice hover effect */
+.nav-logo:hover {
+    color: #FFD700;  /* Brighter gold on hover */
+    transform: scale(1.05);
+    transition: all 0.3s ease;
 }
 
 .nav-logo::after {
@@ -229,10 +235,10 @@ header {
 }
 
 .nav-links a {
-    color: #FFF380;
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 0.5rem 1rem;
@@ -1108,4 +1114,5 @@ header {
         font-size: 1.2rem;
     }
 }
+
 
