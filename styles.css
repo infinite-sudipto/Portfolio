@@ -3,24 +3,25 @@
 
 /* --- 2. COLOR VARIABLES --- */
 :root {
-    --primary-color: #FFFEFC;    /* Bone White */
-    --secondary-color: #8F00FF;  /* Electric Purple (Main Background) */
-    --text-color: #F5F5DC;       /* Pure Beige (Text) */
-    --card-bg: #F8EEEC;          /* Soft Linen (Contrast Areas) */
-    --accent-color: #1338BE;     /* Cobalt Blue */
-    --hover-color: #ffffff;
+    --primary-white: #FFFEFC;     /* Bone White */
+    --bg-purple: #8F00FF;         /* Electric Purple */
+    --text-beige: #F5F5DC;        /* Pure Beige */
+    --glass-salmon: #FC9483;      /* Your Salmon Pink Hex */
+    --glass-rgba: rgba(252, 148, 131, 0.6); /* Salmon Pink with 0.6 Opacity */
+    --accent-blue: #1338BE;       /* Cobalt Blue */
 }
 
 /* --- 3. GENERAL STYLING --- */
 body {
-    font-family: 'Cinzel', serif; /* Entire site now uses Cinzel */
+    font-family: 'Cinzel', serif;
     margin: 0;
     padding: 0;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    background-color: var(--bg-purple);
+    color: var(--text-beige);
     line-height: 1.6;
     overflow-x: hidden;
-    /* Subtle shadow to help Beige text pop against the Purple */
+    perspective: 1000px;
+    /* Keeps text readable against the vibrant purple */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -28,17 +29,22 @@ html {
     scroll-behavior: smooth;
 }
 
-/* --- 4. HEADER & NAVIGATION --- */
+/* --- 4. FROSTED GLASS HEADER --- */
 header {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    background: rgba(254, 197, 239, 0.5); /* Cobalt Blue Background */
-    padding: 1rem 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--primary-color);
+    
+    /* THE FROSTED GLASS LOOK */
+    background: var(--glass-rgba); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -58,16 +64,16 @@ nav ul {
 }
 
 nav ul li a {
-    color: var(--primary-color);
+    color: var(--primary-white);
     text-decoration: none;
     font-weight: 700;
     letter-spacing: 2px;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--text-color);
-    text-shadow: 0 0 10px white;
+    color: var(--text-beige);
+    text-shadow: 0 0 8px white;
 }
 
 /* --- 5. HERO SECTION --- */
@@ -78,29 +84,21 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 80px;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    animation: fadeInUp 1.2s ease-out;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .hero-text h1 {
     font-size: 5rem;
     font-weight: 900;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-    letter-spacing: 5px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 4px 4px 15px rgba(0,0,0,0.6);
-}
-
-.hero-text p {
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--primary-white);
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 4px 4px 10px rgba(0,0,0,0.5);
 }
 
 .hero-image {
@@ -110,97 +108,100 @@ nav ul li a:hover {
     background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
     background-position: center;
     background-size: cover;
-    opacity: 0.25; 
-    animation: zoomInOut 12s ease-in-out infinite;
+    opacity: 0.2; /* Low opacity to let the purple background dominate */
+    animation: zoomInOut 15s ease-in-out infinite;
 }
 
-/* --- 6. PROJECTS SECTION --- */
+/* --- 6. PROJECT CARDS (FROSTED TILES) --- */
 .projects {
     padding: 8rem 2rem;
-    background-color: var(--secondary-color);
     text-align: center;
 }
 
 .project-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
     max-width: 1200px;
-    margin: 4rem auto 0;
+    margin: 0 auto;
 }
 
 .project-card {
-    background-color: var(--card-bg); /* Soft Linen light background */
-    border-radius: 0; /* Sharp edges look better with Cinzel */
-    border: 1px solid var(--accent-color);
+    /* Giving cards the same frosted glass effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s ease;
-    color: #1a1a1a; /* Dark text for readability on light cards */
-    text-shadow: none;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .project-card img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    filter: sepia(30%);
 }
 
 .project-card h3 {
-    font-size: 1.8rem;
-    padding: 1.5rem 1rem 0.5rem;
-    color: var(--accent-color); /* Cobalt Blue Title */
+    padding: 1.5rem;
+    color: var(--glass-salmon); /* Using salmon pink for card titles */
+    margin: 0;
 }
 
 .project-card p {
     padding: 0 1.5rem 1.5rem;
-    font-family: serif; /* Using standard serif for long text readability */
+    font-size: 0.95rem;
 }
 
 /* --- 7. CONTACT SECTION --- */
 .contact {
-    padding: 10rem 2rem;
-    background: linear-gradient(to bottom, var(--secondary-color), #5e00a8);
+    padding: 8rem 2rem;
     text-align: center;
 }
 
 .contact-container {
-    max-width: 650px;
+    max-width: 600px;
     margin: auto;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-rgba); /* Frosted Salmon Container */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
     padding: 4rem;
-    border: 2px solid var(--primary-color);
-    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form button {
-    background-color: var(--accent-color);
+    background-color: var(--accent-blue);
     color: white;
-    padding: 15px 45px;
+    padding: 15px 40px;
     font-family: 'Cinzel', serif;
     font-weight: 700;
-    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
     border: none;
+    border-radius: 50px;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .contact-form button:hover {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    box-shadow: 0 0 20px white;
+    background-color: var(--primary-white);
+    color: var(--accent-blue);
+    transform: scale(1.05);
 }
 
-/* --- 8. KEYFRAME ANIMATIONS --- */
+/* --- 8. ANIMATIONS --- */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(50px); }
+    from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -208,4 +209,3 @@ nav ul li a:hover {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
-
