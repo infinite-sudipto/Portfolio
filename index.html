@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudipta Bosu | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- SEO -->
+    <meta name="description" content="Sudipta Bosu — Aspiring Data Analyst and Operations Specialist with a Physics background. Skilled in Python, SQL, Power BI, and predictive analytics.">
+    <meta name="author" content="Sudipta Bosu">
+
+    <!-- Social Preview -->
+    <meta property="og:title" content="Sudipta Bosu | Data Analyst Portfolio">
+    <meta property="og:description" content="Crafting data into strategy using analytics and business intelligence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://infinite-sudipto.github.io/Portfolio/">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
+    <noscript>
+        <style>#cursor-glow{display:none}</style>
+    </noscript>
+
     <div id="cursor-glow"></div>
 
     <header>
-        <nav>
+        <nav aria-label="Primary Navigation">
             <div class="nav-logo">SUDIPTA BOSU</div>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -21,79 +38,83 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero" role="banner">
         <div class="hero-text">
             <h1>CRAFTING DATA <br><span>INTO STRATEGY</span></h1>
             <p>Aspiring Data Analyst • Operations Specialist • Physics Graduate</p>
-            <a href="#projects" class="btn-main">Explore Work</a>
+            <a href="#projects" class="btn-main" role="button">Explore Work</a>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about">
         <div class="glass-panel">
-            <h2>Professional Profile</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>With a <strong>B.Sc. in Physics (Hons)</strong>, I have cultivated a rigorous analytical mindset that allows me to bridge the gap between complex datasets and strategic business needs. I specialize in leveraging data-driven solutions to optimize customer experience and operational efficiency.</p>
-                    <p>My technical stack includes <strong>Python (Pandas, NumPy, Scikit-learn)</strong> for predictive modeling and <strong>Tableau/Power BI</strong> for business intelligence. I am multilingual (English, Hindi, Bengali), enabling me to communicate insights effectively across diverse stakeholders.</p>
-                </div>
-            </div>
+            <h2 class="section-title">Professional Profile</h2>
+            <p>
+                With a <strong>B.Sc. in Physics (Hons)</strong>, I have cultivated a rigorous analytical mindset that bridges complex datasets and strategic business needs.
+            </p>
+            <p>
+                My technical stack includes <strong>Python (Pandas, NumPy, Scikit-learn)</strong> and <strong>Tableau / Power BI</strong>. I am multilingual (English, Hindi, Bengali).
+            </p>
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <h2 class="section-title">Selected Case Studies</h2>
+    <section id="projects" aria-labelledby="projects-title">
+        <h2 class="section-title" id="projects-title">Selected Case Studies</h2>
+
         <div class="project-cards">
-            
-            <div class="project-card">
+
+            <div class="project-card reveal-hidden">
                 <span class="category">NBFC • Risk Management</span>
                 <h3>Vehicle Loan Default Prediction</h3>
-                <p>An End-to-End EDA and predictive modeling project identifying high-risk loan applicants to improve underwriting accuracy.</p>
+                <p>Predictive modeling to identify high-risk loan applicants.</p>
                 <div class="tech-stack">
                     <span>Python</span><span>Scikit-learn</span><span>Seaborn</span>
                 </div>
-                <a href="https://github.com/infinite-sudipto/VEHICLE_LOAN_DEFAULTER_PREDICTION" target="_blank" class="btn-link">View Repository →</a>
+                <a class="btn-link" target="_blank"
+                   href="https://github.com/infinite-sudipto/VEHICLE_LOAN_DEFAULTER_PREDICTION">
+                   View Repository →
+                </a>
             </div>
 
-            <div class="project-card">
+            <div class="project-card reveal-hidden">
                 <span class="category">HR Analytics</span>
                 <h3>Employee Database Management</h3>
-                <p>Utilizing advanced SQL features like CTEs and Window Functions to query and analyze workforce performance metrics.</p>
+                <p>Advanced SQL analytics using CTEs and Window Functions.</p>
                 <div class="tech-stack">
-                    <span>MySQL</span><span>Relational Design</span><span>BI</span>
+                    <span>MySQL</span><span>CTE</span><span>BI</span>
                 </div>
-                <a href="https://github.com/infinite-sudipto/HR_EMPLOYEES_DATABASE" target="_blank" class="btn-link">View Repository →</a>
+                <a class="btn-link" target="_blank"
+                   href="https://github.com/infinite-sudipto/HR_EMPLOYEES_DATABASE">
+                   View Repository →
+                </a>
             </div>
 
-            <div class="project-card">
+            <div class="project-card reveal-hidden">
                 <span class="category">App Ecosystem</span>
                 <h3>Google Play Rating Prediction</h3>
-                <p>Developing predictive algorithms to identify high-quality applications based on historical user behavior and metadata.</p>
+                <p>Predictive modeling using historical user behavior.</p>
                 <div class="tech-stack">
                     <span>Python</span><span>Pandas</span><span>NumPy</span>
                 </div>
-                <a href="https://github.com/infinite-sudipto/APP_RATING_PREDICTION-ANALYSIS" target="_blank" class="btn-link">View Repository →</a>
+                <a class="btn-link" target="_blank"
+                   href="https://github.com/infinite-sudipto/APP_RATING_PREDICTION-ANALYSIS">
+                   View Repository →
+                </a>
             </div>
-            
+
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="glass-panel contact-box">
-            <h2>Get in Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-col">
-                    <p><strong>Email:</strong> <a href="mailto:diptasu2016@gmail.com">diptasu2016@gmail.com</a></p>
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sudipto-bosu-989b261b7/">[ Profile ]</a></p>
-                </div>
-                <div class="contact-col">
-                    <p><strong>Phone:</strong> +91 9735856231</p>
-                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/919735856231">Start Chat</a></p>
-                </div>
-            </div>
+    <section id="contact">
+        <div class="glass-panel">
+            <h2 class="section-title">Get in Touch</h2>
+            <p><strong>Email:</strong> <a href="mailto:diptasu2016@gmail.com">diptasu2016@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a target="_blank" href="https://www.linkedin.com/in/sudipto-bosu-989b261b7/">Profile</a></p>
+            <p><strong>Phone:</strong> +91 9735856231</p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/919735856231">Start Chat</a></p>
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="./script.js" defer></script>
 </body>
 </html>
