@@ -204,7 +204,7 @@ header {
 .nav-logo {
     font-size: 1.0rem;
     font-weight: 700;
-    color: #F9E076;  /* Your gold color - SOLID, not transparent */
+    color: #F5A400;  /* school bus gold color - SOLID, not transparent */
     font-family: 'Space Grotesk', sans-serif;
     position: relative;
     text-decoration: none;
@@ -1114,6 +1114,7 @@ header {
         font-size: 1.2rem;
     }
 }
+
 
 
 
