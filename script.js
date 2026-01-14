@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursor.style.transform = 'scale(1.5)';
                 cursor.style.borderColor = 'var(--accent)';
                 cursorFollower.style.transform = 'scale(1.2)';
-                cursorFollower.style.background = 'rgba(0, 212, 255, 0.2)';
+                cursorFollower.style.background = 'rgba(255, 107, 107, 0.2)';
             } else {
                 cursor.style.transform = 'scale(1)';
                 cursor.style.borderColor = 'var(--accent)';
                 cursorFollower.style.transform = 'scale(1)';
-                cursorFollower.style.background = 'rgba(0, 212, 255, 0.1)';
+                cursorFollower.style.background = 'rgba(255, 107, 107, 0.1)';
             }
         });
     });
@@ -227,7 +227,164 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ======================
-    // 8. THEME TOGGLE
+    // 8. ADVANCED TYPING ANIMATION
+    // ======================
+    function initAdvancedTypingAnimation() {
+        // Text sequences for animation
+        const sequences = {
+            line1: [
+                "Strategic Data Analysis",
+                "Predictive Analytics",
+                "Business Intelligence",
+                "Data-Driven Insights"
+            ],
+            line2: [
+                "Clear Strategic Decisions",
+                "Actionable Intelligence",
+                "Measurable Results",
+                "Informed Strategies"
+            ]
+        };
+
+        const typingText1 = document.getElementById('typing-text-1');
+        const typingText2 = document.getElementById('typing-text-2');
+        const fadeText = document.getElementById('fade-text');
+
+        // Check if elements exist
+        if (!typingText1 || !typingText2 || !fadeText) {
+            console.log('Animation elements not found');
+            return;
+        }
+
+        // Animation timeline
+        setTimeout(() => {
+            // Start first line animation
+            startTypingAnimation(typingText1, sequences.line1, {
+                typingSpeed: 80,
+                deleteSpeed: 40,
+                pauseAfterType: 1500,
+                pauseAfterDelete: 500,
+                cursorStyle: '|',
+                cursorAnimation: 'blink'
+            });
+
+            // Start second line animation after delay
+            setTimeout(() => {
+                startTypingAnimation(typingText2, sequences.line2, {
+                    typingSpeed: 90,
+                    deleteSpeed: 45,
+                    pauseAfterType: 1800,
+                    pauseAfterDelete: 600,
+                    cursorStyle: '▌',
+                    cursorAnimation: 'pulse'
+                });
+            }, 2000);
+
+        }, 1000);
+
+        // Tagline effects
+        setTimeout(() => {
+            fadeText.style.animation = 'fadeIn 1s ease forwards';
+            
+            // Add hover effect to tagline
+            fadeText.addEventListener('mouseenter', () => {
+                fadeText.style.transform = 'scale(1.05)';
+                fadeText.style.transition = 'transform 0.3s ease';
+            });
+            
+            fadeText.addEventListener('mouseleave', () => {
+                fadeText.style.transform = 'scale(1)';
+            });
+        }, 4000);
+    }
+
+    // Advanced typing animation function
+    function startTypingAnimation(element, wordList, options = {}) {
+        const {
+            typingSpeed = 100,
+            deleteSpeed = 50,
+            pauseAfterType = 2000,
+            pauseAfterDelete = 800,
+            cursorStyle = '|',
+            cursorAnimation = 'blink'
+        } = options;
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+
+        // Set cursor style
+        element.dataset.cursor = cursorStyle;
+        element.classList.add(`cursor-${cursorAnimation}`);
+
+        function type() {
+            if (isPaused) return;
+
+            const currentWord = wordList[wordIndex];
+            
+            if (!isDeleting) {
+                // Typing forward
+                if (charIndex <= currentWord.length) {
+                    element.textContent = currentWord.substring(0, charIndex);
+                    charIndex++;
+                    setTimeout(type, typingSpeed);
+                } else {
+                    // Finished typing word
+                    isDeleting = true;
+                    isPaused = true;
+                    
+                    // Add success effect
+                    element.classList.add('typing-complete');
+                    
+                    setTimeout(() => {
+                        isPaused = false;
+                        element.classList.remove('typing-complete');
+                        setTimeout(type, deleteSpeed);
+                    }, pauseAfterType);
+                }
+            } else {
+                // Deleting
+                if (charIndex >= 0) {
+                    element.textContent = currentWord.substring(0, charIndex);
+                    charIndex--;
+                    setTimeout(type, deleteSpeed);
+                } else {
+                    // Finished deleting
+                    isDeleting = false;
+                    isPaused = true;
+                    
+                    // Move to next word
+                    wordIndex = (wordIndex + 1) % wordList.length;
+                    
+                    setTimeout(() => {
+                        isPaused = false;
+                        setTimeout(type, typingSpeed);
+                    }, pauseAfterDelete);
+                }
+            }
+        }
+
+        // Start animation
+        type();
+
+        // Add interactive pause on hover
+        element.addEventListener('mouseenter', () => {
+            isPaused = true;
+            element.classList.add('typing-paused');
+        });
+
+        element.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                isPaused = false;
+                element.classList.remove('typing-paused');
+                type();
+            }, 500);
+        });
+    }
+
+    // ======================
+    // 9. THEME TOGGLE
     // ======================
     const themeToggle = document.getElementById('themeToggle');
     let isDark = true;
@@ -237,10 +394,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (isDark) {
             // Dark theme
-            document.documentElement.style.setProperty('--primary', '#0A0A0F');
-            document.documentElement.style.setProperty('--secondary', '#151520');
-            document.documentElement.style.setProperty('--text-primary', '#FFFFFF');
-            document.documentElement.style.setProperty('--text-secondary', '#B0B0C0');
+            document.documentElement.style.setProperty('--primary', '#FFF9E3');
+            document.documentElement.style.setProperty('--secondary', '#F5F0D8');
+            document.documentElement.style.setProperty('--text-primary', '#2D3436');
+            document.documentElement.style.setProperty('--text-secondary', '#636E72');
             themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         } else {
             // Light theme
@@ -255,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ======================
-    // 9. TOAST NOTIFICATION
+    // 10. TOAST NOTIFICATION
     // ======================
     function showToast(message, type = 'info') {
         const toast = document.createElement('div');
@@ -288,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================
-    // 10. SMOOTH SCROLL
+    // 11. SMOOTH SCROLL
     // ======================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -311,228 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ======================
-    // 11. INITIALIZE ALL EFFECTS
-    // ======================
-   function initializeAllEffects() {
-    createDataParticles();
-    animateCounters();
-    updateNavIndicator();
-    initAdvancedTypingAnimation(); // ← CHANGED
-    updateCopyrightYear();
-    
-    window.addEventListener('scroll', updateNavIndicator);
-}
-
-    // ======================
-    // 12. TYPING EFFECT
-    // ======================
-    // ======================
-// 12. ADVANCED TYPING ANIMATION
-// ======================
-function initAdvancedTypingAnimation() {
-    // Text sequences for animation
-    const sequences = {
-        line1: [
-            "Strategic Data Analysis",
-            "Predictive Analytics",
-            "Business Intelligence",
-            "Data-Driven Insights"
-        ],
-        line2: [
-            "Clear Strategic Decisions",
-            "Actionable Intelligence",
-            "Measurable Results",
-            "Informed Strategies"
-        ]
-    };
-
-    const typingText1 = document.getElementById('typing-text-1');
-    const typingText2 = document.getElementById('typing-text-2');
-    const fadeText = document.getElementById('fade-text');
-
-    // Check if elements exist
-    if (!typingText1 || !typingText2 || !fadeText) {
-        console.log('Animation elements not found');
-        return;
-    }
-
-    // Animation timeline
-    setTimeout(() => {
-        // Start first line animation
-        startTypingAnimation(typingText1, sequences.line1, {
-            typingSpeed: 80,
-            deleteSpeed: 40,
-            pauseAfterType: 1500,
-            pauseAfterDelete: 500,
-            cursorStyle: '|',
-            cursorAnimation: 'blink'
-        });
-
-        // Start second line animation after delay
-        setTimeout(() => {
-            startTypingAnimation(typingText2, sequences.line2, {
-                typingSpeed: 90,
-                deleteSpeed: 45,
-                pauseAfterType: 1800,
-                pauseAfterDelete: 600,
-                cursorStyle: '▌',
-                cursorAnimation: 'pulse'
-            });
-        }, 2000);
-
-    }, 1000);
-
-    // Tagline effects
-    setTimeout(() => {
-        fadeText.style.animation = 'fadeIn 1s ease forwards';
-        
-        // Add hover effect to tagline
-        fadeText.addEventListener('mouseenter', () => {
-            fadeText.style.transform = 'scale(1.05)';
-            fadeText.style.transition = 'transform 0.3s ease';
-        });
-        
-        fadeText.addEventListener('mouseleave', () => {
-            fadeText.style.transform = 'scale(1)';
-        });
-    }, 4000);
-}
-
-// Advanced typing animation function
-function startTypingAnimation(element, wordList, options = {}) {
-    const {
-        typingSpeed = 100,
-        deleteSpeed = 50,
-        pauseAfterType = 2000,
-        pauseAfterDelete = 800,
-        cursorStyle = '|',
-        cursorAnimation = 'blink'
-    } = options;
-
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-
-    // Set cursor style
-    element.dataset.cursor = cursorStyle;
-    element.classList.add(`cursor-${cursorAnimation}`);
-
-    function type() {
-        if (isPaused) return;
-
-        const currentWord = wordList[wordIndex];
-        
-        if (!isDeleting) {
-            // Typing forward
-            if (charIndex <= currentWord.length) {
-                element.textContent = currentWord.substring(0, charIndex);
-                charIndex++;
-                setTimeout(type, typingSpeed);
-            } else {
-                // Finished typing word
-                isDeleting = true;
-                isPaused = true;
-                
-                // Add success effect
-                element.classList.add('typing-complete');
-                
-                setTimeout(() => {
-                    isPaused = false;
-                    element.classList.remove('typing-complete');
-                    setTimeout(type, deleteSpeed);
-                }, pauseAfterType);
-            }
-        } else {
-            // Deleting
-            if (charIndex >= 0) {
-                element.textContent = currentWord.substring(0, charIndex);
-                charIndex--;
-                setTimeout(type, deleteSpeed);
-            } else {
-                // Finished deleting
-                isDeleting = false;
-                isPaused = true;
-                
-                // Move to next word
-                wordIndex = (wordIndex + 1) % wordList.length;
-                
-                setTimeout(() => {
-                    isPaused = false;
-                    setTimeout(type, typingSpeed);
-                }, pauseAfterDelete);
-            }
-        }
-    }
-
-    // Start animation
-    type();
-
-    // Add interactive pause on hover
-    element.addEventListener('mouseenter', () => {
-        isPaused = true;
-        element.classList.add('typing-paused');
-    });
-
-    element.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-            isPaused = false;
-            element.classList.remove('typing-paused');
-            type();
-        }, 500);
-    });
-}
-        
-        let currentIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-        
-        function typeEffect() {
-            const currentTitle = titles[currentIndex];
-            
-            if (isDeleting) {
-                titleElement.textContent = currentTitle.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50;
-            } else {
-                titleElement.textContent = currentTitle.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 100;
-            }
-            
-            if (!isDeleting && charIndex === currentTitle.length) {
-                isDeleting = true;
-                typingSpeed = 1500;
-                setTimeout(typeEffect, typingSpeed);
-                return;
-            }
-            
-            if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                currentIndex = (currentIndex + 1) % titles.length;
-                typingSpeed = 500;
-            }
-            
-            setTimeout(typeEffect, typingSpeed);
-        }
-        
-        // Start typing effect after a delay
-        setTimeout(typeEffect, 1000);
-    }
-
-    // ======================
-    // 13. UPDATE COPYRIGHT YEAR
-    // ======================
-    function updateCopyrightYear() {
-        const yearElement = document.getElementById('currentYear');
-        if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
-        }
-    }
-
-    // ======================
-    // 14. TECH NODE INTERACTIONS
+    // 12. TECH NODE INTERACTIONS
     // ======================
     const techNodes = document.querySelectorAll('.tech-node');
     techNodes.forEach(node => {
@@ -542,16 +478,16 @@ function startTypingAnimation(element, wordList, options = {}) {
         });
         
         node.addEventListener('mouseenter', () => {
-            node.style.boxShadow = '0 0 40px var(--accent-glow)';
+            node.style.boxShadow = '0 0 40px rgba(255, 107, 107, 0.4)';
         });
         
         node.addEventListener('mouseleave', () => {
-            node.style.boxShadow = '0 0 30px var(--accent-glow)';
+            node.style.boxShadow = '0 0 30px rgba(255, 107, 107, 0.3)';
         });
     });
 
     // ======================
-    // 15. KEYBOARD SHORTCUTS
+    // 13. KEYBOARD SHORTCUTS
     // ======================
     document.addEventListener('keydown', (e) => {
         // Toggle theme with Ctrl+T
@@ -571,32 +507,32 @@ function startTypingAnimation(element, wordList, options = {}) {
                 }, 300);
             });
         }
-        
-        // Number keys for navigation
-        if (e.key >= '1' && e.key <= '5') {
-            const sections = ['home', 'about', 'projects', 'skills', 'contact'];
-            const index = parseInt(e.key) - 1;
-            if (sections[index]) {
-                const section = document.getElementById(sections[index]);
-                if (section) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = section.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    showToast(`Navigated to ${sections[index]}`, 'info');
-                }
-            }
-        }
     });
 
     // ======================
-    // 16. INITIALIZE ON LOAD
+    // 14. INITIALIZE ALL EFFECTS
     // ======================
-    // Add some initial toasts
+    function initializeAllEffects() {
+        createDataParticles();
+        animateCounters();
+        updateNavIndicator();
+        initAdvancedTypingAnimation();
+        updateCopyrightYear();
+        
+        window.addEventListener('scroll', updateNavIndicator);
+    }
+
+    // ======================
+    // 15. UPDATE COPYRIGHT YEAR
+    // ======================
+    function updateCopyrightYear() {
+        const yearElement = document.getElementById('currentYear');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+    }
+
+    // Initial toasts
     setTimeout(() => {
         showToast('Welcome to my portfolio!', 'success');
     }, 2500);
@@ -607,70 +543,6 @@ function startTypingAnimation(element, wordList, options = {}) {
 });
 
 // ======================
-// 17. WINDOW RESIZE HANDLER
+// 16. WINDOW RESIZE HANDLER
 // ======================
-window.addEventListener('resize', () => {
-    const navIndicator = document.getElementById('navIndicator');
-    if (navIndicator) {
-        // Recalculate nav indicator position on resize
-        setTimeout(() => {
-            const currentSection = getCurrentSection();
-            const currentLink = document.querySelector(`.nav-links a[href="#${currentSection}"]`);
-            
-            if (currentLink) {
-                const { offsetLeft, offsetWidth } = currentLink;
-                navIndicator.style.left = `${offsetLeft}px`;
-                navIndicator.style.width = `${offsetWidth}px`;
-            }
-        }, 100);
-    }
-});
-
-// ======================
-// 18. UTILITY FUNCTIONS
-// ======================
-function getCurrentSection() {
-    const sections = ['home', 'about', 'projects', 'skills', 'contact'];
-    let current = 'home';
-    
-    sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= 100 && rect.bottom >= 100) {
-                current = section;
-            }
-        }
-    });
-    
-    return current;
-}
-
-// ======================
-// 19. MAKE FUNCTIONS GLOBALLY AVAILABLE
-// ======================
-window.Portfolio = {
-    showToast: (message, type) => showToast(message, type),
-    toggleTheme: () => document.getElementById('themeToggle').click(),
-    scrollToSection: (sectionId) => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            const targetPosition = section.offsetTop - headerHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    }
-};
-
-// ======================
-// 20. CONSOLE GREETING
-// ======================
-console.log('%c👋 Welcome to Sudipta Bosu\'s Portfolio!', 'color: #00D4FF; font-size: 18px; font-weight: bold;');
-console.log('%c💻 Built with cutting-edge web technologies', 'color: #7B61FF; font-size: 14px;');
-console.log('%c📊 Data Analyst & AI Strategist | Physics Background', 'color: #00FF88; font-size: 14px;');
-console.log('%c🔗 GitHub: https://github.com/infinite-sudipto', 'color: #FFFFFF; font-size: 12px;');
-
+window.addEventListener('resize
