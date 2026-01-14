@@ -1,104 +1,77 @@
-/* --- 1. IMPORT GOOGLE FONT --- */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+/* --- 1. CLEAN FONT IMPORT --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 
-/* --- 2. COLOR VARIABLES --- */
 :root {
-    --primary-white: #FFFEFC;     /* Bone White */
-    --bg-purple: #8F00FF;         /* Electric Purple */
-    --text-beige: #F5F5DC;        /* Pure Beige */
-    --glass-salmon: #FC9483;      /* Your Salmon Pink Hex */
-    --glass-rgba: rgba(252, 148, 131, 0.6); /* Salmon Pink with 0.6 Opacity */
-    --accent-blue: #1338BE;       /* Cobalt Blue */
+    --bg-main: #F8F9FA;           /* Crisp Ghost White */
+    --text-dark: #2D3436;         /* Soft Charcoal for eyes */
+    --accent-color: #4A90E2;      /* Professional Soft Blue */
+    --glass-white: rgba(255, 255, 255, 0.6);
+    --border-light: rgba(0, 0, 0, 0.05);
 }
 
-/* --- 3. GENERAL STYLING --- */
+/* --- 2. GENERAL STYLING --- */
 body {
-    font-family: 'Cinzel', serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: var(--bg-purple);
-    color: var(--text-beige);
-    line-height: 1.6;
-    overflow-x: hidden;
-    perspective: 1000px;
-    /* Keeps text readable against the vibrant purple */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.8;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-/* --- 4. FROSTED GLASS HEADER --- */
+/* --- 3. TRANSPARENT NAVIGATION --- */
 header {
     position: fixed;
     width: 100%;
     top: 0;
-    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
-    
-    /* THE FROSTED GLASS LOOK */
-    background: var(--glass-rgba); 
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px); /* Safari support */
-    
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border-light);
 }
 
 nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 2.5rem;
-    margin: 0;
+    gap: 3rem;
 }
 
 nav ul li a {
-    color: var(--primary-white);
     text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 2px;
+    color: var(--text-dark);
+    font-weight: 500;
+    opacity: 0.7;
     transition: 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--text-beige);
-    text-shadow: 0 0 8px white;
+    opacity: 1;
+    color: var(--accent-color);
 }
 
-/* --- 5. HERO SECTION --- */
+/* --- 4. HERO SECTION (ULTRA LIGHT) --- */
 .hero {
-    position: relative;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    animation: fadeInUp 1s ease-in-out;
+    background: radial-gradient(circle at center, #ffffff 0%, #f1f3f5 100%);
 }
 
 .hero-text h1 {
-    font-size: 5rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    color: var(--primary-white);
-    letter-spacing: 4px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 4px 4px 10px rgba(0,0,0,0.5);
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-dark);
 }
 
 .hero-image {
@@ -106,106 +79,62 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
-    background-position: center;
     background-size: cover;
-    opacity: 0.2; /* Low opacity to let the purple background dominate */
-    animation: zoomInOut 15s ease-in-out infinite;
+    opacity: 0.05; /* Barely there, very professional */
 }
 
-/* --- 6. PROJECT CARDS (FROSTED TILES) --- */
+/* --- 5. PROJECT CARDS (GLASS TILES) --- */
 .projects {
-    padding: 8rem 2rem;
-    text-align: center;
+    padding: 100px 20px;
 }
 
 .project-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: auto;
 }
 
 .project-card {
-    /* Giving cards the same frosted glass effect */
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--glass-white);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.9);
 }
 
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.project-card h3 {
-    padding: 1.5rem;
-    color: var(--glass-salmon); /* Using salmon pink for card titles */
-    margin: 0;
-}
-
-.project-card p {
-    padding: 0 1.5rem 1.5rem;
-    font-size: 0.95rem;
-}
-
-/* --- 7. CONTACT SECTION --- */
-.contact {
-    padding: 8rem 2rem;
-    text-align: center;
-}
-
+/* --- 6. CONTACT SECTION --- */
 .contact-container {
-    max-width: 600px;
-    margin: auto;
-    background: var(--glass-rgba); /* Frosted Salmon Container */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    
-    padding: 4rem;
+    max-width: 500px;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 3rem;
     border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
 }
 
 .contact-form button {
-    background-color: var(--accent-blue);
+    background: var(--text-dark);
     color: white;
-    padding: 15px 40px;
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    text-transform: uppercase;
+    width: 100%;
+    padding: 15px;
     border: none;
-    border-radius: 50px;
+    border-radius: 12px;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .contact-form button:hover {
-    background-color: var(--primary-white);
-    color: var(--accent-blue);
-    transform: scale(1.05);
-}
-
-/* --- 8. ANIMATIONS --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes zoomInOut {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    background: var(--accent-color);
 }
