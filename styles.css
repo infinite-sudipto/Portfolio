@@ -1,19 +1,13 @@
+/* --- 1. VARIABLES --- */
 :root {
-    /* 1. Background changed to Pure Beige */
-    --secondary-color: #F5F5DC; 
-    
-    /* 2. Text changed from White to School Bus Yellow */
-    --text-color: #FFD800; 
-    
-    /* 3. Accent color (used for headers/highlights) */
-    --primary-color: #FFD800; 
-    
-    /* 4. Hover states */
+    --primary-color: #FFD800;    /* School Bus Yellow */
+    --secondary-color: #F5F5DC;  /* Pure Beige */
+    --text-color: #FFD800;       /* School Bus Yellow (Replaced White) */
+    --dark-bg: #1a1600;          /* Deep Dark Brown for contrast areas */
     --hover-color: #e6c300;
-    --contact-hover-color: #000000; /* Dark hover for contrast */
 }
 
-/* General Styling */
+/* --- 2. GENERAL STYLING --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -22,98 +16,212 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     perspective: 1000px;
+    /* Subtle shadow so yellow text is visible on beige background */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* Header Section */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- 3. HEADER & NAV --- */
 header {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    /* Semi-transparent beige to match the theme */
-    background: rgba(245, 245, 220, 0.9); 
+    background: rgba(26, 22, 0, 0.95); /* Dark bar so yellow links pop */
     padding: 1rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
 nav ul li a {
-    color: #333; /* Using dark grey for nav links so people can find them */
+    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: var(--primary-color);
+    color: #fff; /* White hover flash for interaction */
 }
 
-/* Hero Section */
+/* --- 4. HERO SECTION --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-text h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
-    /* Added a dark shadow so yellow text is readable on beige */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Heavy shadow to ensure the yellow title is the star */
+    text-shadow: 0 0 20px rgba(255, 216, 0, 0.4), 3px 3px 10px rgba(0,0,0,0.9);
 }
 
 .hero-text p {
     font-size: 1.4rem;
     margin-bottom: 2rem;
-    color: #444; /* Darker text for the description for readability */
+    opacity: 1;
 }
 
-/* Project Cards */
+.hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.15; /* Low opacity so beige shines through */
+    animation: zoomInOut 8s ease-in-out infinite;
+}
+
+/* --- 5. ABOUT SECTION --- */
+.about {
+    background-color: var(--secondary-color);
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+/* --- 6. PROJECTS SECTION --- */
+.projects {
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: 6rem 0;
+}
+
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
 .project-card {
-    background-color: #ffffff; /* White cards look great on beige */
+    background-color: var(--dark-bg); /* Dark cards to make yellow text readable */
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .project-card h3 {
     padding: 1rem;
-    color: #333; /* Darker title */
+    color: var(--primary-color);
 }
 
 .project-card p {
     padding: 0 1rem 1rem;
-    color: #666; /* Grey text for project details */
+    color: var(--text-color);
 }
 
-/* Updated the link inside project cards */
 .project-card a {
     color: var(--primary-color);
-    font-weight: bold;
     text-decoration: none;
-    padding: 1rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
     display: inline-block;
 }
 
-/* Contact Section */
+/* --- 7. CONTACT SECTION --- */
 .contact {
-    background: #F5F5DC;
     padding: 6rem 0;
+    background: linear-gradient(to bottom, var(--secondary-color), #e3e3c3);
+    text-align: center;
 }
 
 .contact-container {
     max-width: 600px;
     margin: auto;
-    background: #fff; /* White container for the form */
+    background: var(--dark-bg);
     padding: 3rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.contact h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
 }
 
 .contact-form button {
     background-color: var(--primary-color);
     color: #000; /* Black text on yellow button */
-    padding: 12px;
+    padding: 12px 24px;
+    margin-top: 20px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.contact-form button:hover {
+    transform: scale(1.05);
+    background-color: var(--hover-color);
+}
+
+/* --- 8. ANIMATIONS --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomInOut {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
