@@ -34,7 +34,7 @@ header {
     width: 100%;
     top: 0;
     left: 0;
-    background: rgba(19, 56, 190, 0.9); /* Cobalt Blue Background */
+    background: rgba(254, 197, 239, 0.5); /* Cobalt Blue Background */
     padding: 1rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
@@ -208,3 +208,4 @@ nav ul li a:hover {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
+
