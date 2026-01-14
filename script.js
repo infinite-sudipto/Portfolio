@@ -545,4 +545,103 @@ document.addEventListener('DOMContentLoaded', () => {
 // ======================
 // 16. WINDOW RESIZE HANDLER
 // ======================
-window.addEventListener('resize
+window.addEventListener('resize', () => {
+    const navIndicator = document.getElementById('navIndicator');
+    if (navIndicator) {
+        setTimeout(() => {
+            const currentSection = getCurrentSection();
+            const currentLink = document.querySelector(`.nav-links a[href="#${currentSection}"]`);
+            
+            if (currentLink) {
+                const { offsetLeft, offsetWidth } = currentLink;
+                navIndicator.style.left = `${offsetLeft}px`;
+                navIndicator.style.width = `${offsetWidth}px`;
+            }
+        }, 100);
+    }
+});
+
+// ======================
+// 17. UTILITY FUNCTIONS
+// ======================
+function getCurrentSection() {
+    const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+    let current = 'home';
+    
+    sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+                current = section;
+            }
+        }
+    });
+    
+    return current;
+}
+
+// ======================
+// 18. ANIMATION KEYFRAMES
+// ======================
+const styleSheet = document.createElement('style');
+styleSheet.textContent = `
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+        }
+    }
+    
+    .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--secondary);
+        border: 1px solid var(--success);
+        border-left: 4px solid var(--success);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .toast.show {
+        transform: translateX(0);
+    }
+`;
+document.head.appendChild(styleSheet);
+
+// Console greeting
+console.log('%c👋 Welcome to Sudipta Bosu\'s Portfolio!', 'color: #FF6B6B; font-size: 18px; font-weight: bold;');
+console.log('%c💼 Business Operations & Data Analytics', 'color: #4ECDC4; font-size: 14px;');
+console.log('%c🚀 Driving Efficiency Through Data-Driven Decisions', 'color: #00B894; font-size: 14px;');
