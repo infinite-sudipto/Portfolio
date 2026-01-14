@@ -1,9 +1,16 @@
 :root {
-    --primary-color: #66fcf1; /* Neon accent color */
-    --secondary-color: #111; /* Deep dark background */
-    --text-color: #eee; /* Off-white for readability */
-    --hover-color: #45d9c5;
-    --contact-hover-color: yellow;
+    /* 1. Dark Yellow / Gold Background */
+    --secondary-color: #2b2501; 
+    
+    /* 2. Pure White Text */
+    --text-color: #ffffff; 
+    
+    /* 3. Bright Yellow Accent (replacing the old neon cyan) */
+    --primary-color: #f1c40f; 
+    
+    /* 4. Lighter Yellow for Hovers */
+    --hover-color: #ffdb58;
+    --contact-hover-color: #ffffff;
 }
 
 /* General Styling */
@@ -28,7 +35,8 @@ header {
     width: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    /* Darkened the header to match the yellow-black theme */
+    background: rgba(15, 13, 0, 0.9); 
     padding: 1rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
@@ -84,7 +92,8 @@ nav ul li a:hover {
     font-size: 4rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
-    text-shadow: 0 0 20px rgba(102, 252, 241, 0.8);
+    /* Updated glow to match the yellow accent */
+    text-shadow: 0 0 20px rgba(241, 196, 15, 0.6);
 }
 
 .hero-text p {
@@ -99,7 +108,7 @@ nav ul li a:hover {
     height: 100%;
     background-image: url("Portfolio/images/Screenshot%202025-02-02%20193435.png");
     background-position: center;
-    opacity: 0.4;
+    opacity: 0.3; /* Slightly lowered to keep white text readable */
     animation: zoomInOut 8s ease-in-out infinite;
 }
 
@@ -107,6 +116,7 @@ nav ul li a:hover {
 .about {
     background-color: var(--secondary-color);
     text-align: center;
+    padding: 6rem 0;
 }
 
 .about p {
@@ -131,16 +141,17 @@ nav ul li a:hover {
 }
 
 .project-card {
-    background-color: #222;
+    /* Slightly lighter than the background for contrast */
+    background-color: #3d3401; 
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .project-card img {
@@ -156,16 +167,18 @@ nav ul li a:hover {
 
 .project-card p {
     padding: 0 1rem 1rem;
+    color: var(--text-color);
 }
+
 /* Project Card Links */
 .project-card a {
-    color: white; /* Set the default color to white */
-    text-decoration: none; /* Ensure no underline */
-    transition: color 0.3s ease; /* Smooth transition for color change */
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .project-card a:hover {
-    color: yellow; /* Change color to yellow on hover */
+    color: var(--primary-color);
 }
 
 /* Contact Section */
@@ -173,13 +186,14 @@ nav ul li a:hover {
     position: relative;
     text-align: center;
     padding: 6rem 0;
-    background: linear-gradient(to right, #333, #111);
+    /* Updated gradient to go from dark yellow to deep gold */
+    background: linear-gradient(to right, #2b2501, #1a1600);
 }
 
 .contact-container {
     max-width: 600px;
     margin: auto;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -203,17 +217,15 @@ nav ul li a:hover {
     border: none;
     border-radius: 5px;
     font-size: 1rem;
-}
-
-.contact-form textarea {
-    height: 150px;
+    background: #fff;
 }
 
 .contact-form button {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: #000; /* Black text on yellow button for better visibility */
     padding: 12px;
     font-size: 1rem;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -223,13 +235,4 @@ nav ul li a:hover {
 .contact-form button:hover {
     transform: translateY(-3px);
     background-color: var(--hover-color);
-}
-
-.contact a {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.contact a:hover {
-    color: var(--contact-hover-color);
 }
