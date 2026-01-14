@@ -1,64 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. THE MOUSE GLOW (Ultra-Cool Visual) ---
-    const cursorGlow = document.createElement('div');
-    cursorGlow.id = 'cursor-glow';
-    document.body.appendChild(cursorGlow);
+
+    /* ==============================
+       1. MOUSE GLOW (OPTIMIZED)
+       ============================== */
+
+    let cursorGlow = document.getElementById('cursor-glow');
+
+    // Create only if it doesn't already exist
+    if (!cursorGlow) {
+        cursorGlow = document.createElement('div');
+        cursorGlow.id = 'cursor-glow';
+        document.body.appendChild(cursorGlow);
+    }
+
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
 
     document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
     });
 
-    // --- 2. PROFESSIONAL SMOOTH SCROLL ---
+    // Smooth trailing animation (premium feel)
+    function animateGlow() {
+        glowX += (mouseX - glowX) * 0.08;
+        glowY += (mouseY - glowY) * 0.08;
+        cursorGlow.style.transform = `translate(${glowX}px, ${glowY}px)`;
+        requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+
+
+    /* ==============================
+       2. PROFESSIONAL SMOOTH SCROLL
+       ============================== */
+
+    const headerOffset = 90; // fixed header height
+
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
+        anchor.addEventListener('click', (e) => {
+            const targetId = anchor.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
-            if (targetElement) {
-                const headerOffset = 80; // Space for the fixed header
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            if (!targetElement) return;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            e.preventDefault();
+
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         });
     });
 
-    // --- 3. REVEAL ANIMATION (Intersection Observer) ---
-    // This makes content fade in as you scroll down
-    const revealOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
 
-    const revealOnScroll = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-visible');
-            }
-        });
-    }, revealOptions);
+    /* ==============================
+       3. REVEAL ON SCROLL (REFINED)
+       ============================== */
 
-    // Apply to glass panels and project cards
-    const elementsToReveal = document.querySelectorAll('.glass-panel, .project-card');
-    elementsToReveal.forEach(el => {
-        el.classList.add('reveal-hidden');
-        revealOnScroll.observe(el);
-    });
-
-    // --- 4. FORM HANDLING (Safe Check) ---
-    const form = document.querySelector('.contact-form');
-    if (form) {
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            alert("Thank you, Sudipta will get back to you soon!");
-            form.reset();
-        });
-    }
-});
+    const revealObserver = new IntersectionObserver(
+        (
