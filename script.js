@@ -1,93 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. SMOOTH SCROLL WITH OFFSET ---
-    const navLinks = document.querySelectorAll('nav ul li a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const headerOffset = 80;
-                const elementPosition = targetSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+@@ -1,7 +1,7 @@
+// scripts.js
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scrolling for navigation links (use ONE of the versions - they are the same)
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {  // Recommended version
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-    // --- 2. HEADER SCROLL EFFECT (Glass Intensity) ---
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.padding = '0.5rem 0';
-            header.style.background = 'rgba(255, 250, 218, 0.9)'; // More cream when scrolling
-            header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-        } else {
-            header.style.padding = '1rem 0';
-            header.style.background = 'rgba(255, 255, 255, 0.45)';
-            header.style.boxShadow = 'none';
-        }
-    });
-
-    // --- 3. REVEAL ON SCROLL (Intersection Observer) ---
-    const revealOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Once it reveals, we can stop observing
-                observer.unobserve(entry.target);
-            }
-        });
-    }, revealOptions);
-
-    // Target all project cards and the about container
-    const elementsToReveal = document.querySelectorAll('.project-card, .contact-container');
-    
-    elementsToReveal.forEach(el => {
-        // Set initial state via JS if not in CSS
-        el.style.opacity = "0";
-        el.style.transform = "translateY(40px)";
-        el.style.transition = "all 0.8s cubic-bezier(0.22, 1, 0.36, 1)";
-        revealOnScroll.observe(el);
-    });
-
-    // --- 4. ACTIVE NAV LINK TRACKING ---
-    const sections = document.querySelectorAll('section');
-    window.addEventListener('scroll', () => {
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active-nav');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active-nav');
-            }
-        });
+@@ -17,34 +17,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Create the active-nav style helper
-const style = document.createElement('style');
-style.innerHTML = `
-    .active-nav { color: #4A90E2 !important; border-bottom: 2px solid #4A90E2; }
-    .active { opacity: 1 !important; transform: translateY(0) !important; }
-`;
-document.head.appendChild(style);
+// OR (Alternative - does exactly the same thing)
+// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         e.preventDefault();
+
+// Simple parallax effect for hero section (optional)
+//         const targetId = this.getAttribute('href').substring(1);
+//         const targetElement = document.getElementById(targetId);
+
+//         if (targetElement) {
+//             window.scrollTo({
+//                 top: targetElement.offsetTop,
+//                 behavior: 'smooth'
+//             });
+//         }
+//     });
+// });
+
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const overlay = document.querySelector('.hero-overlay');
+    const heroImage = hero.querySelector('.hero-image'); // Select the hero image element
+
+    const scrollY = window.scrollY;
+
+    overlay.style.transform = `translateY(${scrollY * 0.2}px)`; // Adjust the multiplier for the parallax speed
+    // Parallax effect for the background image
+    heroImage.style.transform = `translateY(${scrollY * 0.3}px)`; // Adjust parallax speed
+
+    // Optional: Parallax for the image (more complex)
+    // const image = hero.querySelector('.hero-image img');
+    // image.style.transform = `translateY(${scrollY * 0.4}px)`; // Different parallax speed for the image
+    // Optional: Parallax for the text content (if needed)
+    // const heroContent = hero.querySelector('.hero-content');
+    // heroContent.style.transform = `translateY(${scrollY * 0.1}px)`; // Adjust speed as needed
+});
+
+
+// Form submission handling (example - you'll need server-side code)
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+const form = document.querySelector('form'); // Make sure you have a <form> element
+if (form) { // Check if the form exists on the page
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+    // Here you would typically use AJAX or fetch to send the form data to your server
+    // For this example, we'll just show an alert
+    alert("Form submitted (client-side simulation).  You'll need server-side code to actually process the data.");
+
+    // Reset the form (optional)
+    form.reset();
+});
+        // Here you would typically use AJAX or fetch to send the form data to your server
+        // For this example, we'll just show an alert
+        alert("Form submitted (client-side simulation). You'll need server-side code to actually process the data.");
+
+        form.reset(); // Reset the form (optional)
+    });
+}
+
+
