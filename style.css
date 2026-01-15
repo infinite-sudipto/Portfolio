@@ -160,8 +160,8 @@ body {
 /* Custom Cursor */
 .custom-cursor {
     position: fixed;
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     border: 2px solid var(--accent);
     border-radius: 50%;
     pointer-events: none;
@@ -171,8 +171,8 @@ body {
 
 .cursor-follower {
     position: fixed;
-    width: 60px;
-    height: 60px;
+    width: 20px;
+    height: 20px;
     background: rgba(255, 107, 107, 0.1);
     border-radius: 50%;
     pointer-events: none;
@@ -204,7 +204,7 @@ header {
 .nav-logo {
     font-size: 1.0rem;
     font-weight: 700;
-    color: #F5A400;  /* school bus gold color - SOLID, not transparent */
+    color: #FFD700;  /* school bus gold color - SOLID, not transparent */
     font-family: 'Space Grotesk', sans-serif;
     position: relative;
     text-decoration: none;
@@ -212,7 +212,7 @@ header {
 
 /* Optional: Add a nice hover effect */
 .nav-logo:hover {
-    color: #FFD700;  /* Brighter gold on hover */
+    color: #FFEC8B;  /* Brighter gold on hover */
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
@@ -1114,6 +1114,7 @@ header {
         font-size: 1.2rem;
     }
 }
+
 
 
 
