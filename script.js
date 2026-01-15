@@ -558,3 +558,34 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log('%c👋 Welcome to Sudipto Bosu\'s Portfolio!', 'color: #FF9800; font-size: 16px; font-weight: bold;');
 console.log('%c💼 Business Operations & Data Analytics', 'color: #2196F3; font-size: 14px;');
 console.log('%c🚀 Driving Efficiency Through Data-Driven Decisions', 'color: #4CAF50; font-size: 14px;');
+
+
+// ===== ENHANCED THEME TOGGLE WITH HEADER EFFECT =====
+(function() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const header = document.querySelector('header');
+    
+    if (!themeToggle || !header) return;
+    
+    themeToggle.addEventListener('click', function() {
+        // Toggle theme
+        document.body.classList.toggle('dark-theme');
+        
+        // Update header
+        if (document.body.classList.contains('dark-theme')) {
+            header.style.cssText = `
+                background: rgba(26, 26, 26, 0.95);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            `;
+        } else {
+            header.style.cssText = `
+                background: var(--primary);
+                border-bottom: 1px solid var(--glass-border);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            `;
+        }
+    });
+})();
