@@ -162,7 +162,7 @@ animation: loading 2s ease-in-out forwards;
 position: fixed;
 width: 12px;
 height: 12px;
-border: 2px solid #FF8C00;
+border: 2px solid #FFD700;
 border-radius: 50%;
 pointer-events: none;
 pointer-events: none;
@@ -177,15 +177,13 @@ box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Add glow effect */
 position: fixed;
 width: 14px;
 height: 14px;
-background: #f9ca24;
-box-shadow: 0 0 20px #f9ca24,
-            0 0 40px rgba(249, 202, 36, 0.5);
+background: rgba(255, 215, 0, 0.2); /* Deep yellow with transparency */
 border-radius: 50%;
 pointer-events: none;
 z-index: 9998;
 transition: transform 0.4s ease;
 mix-blend-mode: difference;
-border: 1px solid rgba(255, 140, 0, 0.3); /* Add subtle border */
+border: 1px solid rgba(255, 215, 0, 0.4); /* Add subtle border */
 }
 
 /* Navigation */
@@ -1122,5 +1120,6 @@ height: 50px;
 font-size: 1.2rem;
 }
 }
+
 
 
