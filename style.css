@@ -3,18 +3,18 @@
 :root {
     --primary: #F8F9FA;
     --secondary: #E9ECEF;
-    --accent: #FFC107;
-    --accent-deep: #FF9800;
-    --accent-secondary: #2196F3;
-    --text-primary: #212529;
-    --text-secondary: #495057;
-    --gradient-1: linear-gradient(135deg, #FFC107 0%, #FF9800 50%, #2196F3 100%);
+    --accent: #FF6B6B;
+    --accent-deep: #FF8C00;
+    --accent-secondary: #4ECDC4;
+    --text-primary: #2D3436;
+    --text-secondary: #636E72;
+    --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
     --gradient-2: linear-gradient(45deg, #E9ECEF 0%, #F8F9FA 100%);
-    --glass: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(0, 0, 0, 0.1);
-    --success: #4CAF50;
-    --warning: #FF9800;
-    --danger: #F44336;
+    --glass: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(45, 52, 54, 0.1);
+    --success: #00B894;
+    --warning: #FDCB6E;
+    --danger: #E17055;
     --business-blue: #E3F2FD;
     --professional-gray: #F5F7FA;
 }
@@ -1153,4 +1153,5 @@ header {
         height: 40px;
     }
 }
+
 
