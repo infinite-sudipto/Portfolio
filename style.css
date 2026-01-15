@@ -1,20 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
-
 :root {
---primary: #FFF9E3;
---secondary: #F5F0D8;
---accent: #FF6B6B;
---accent-glow: rgba(255, 107, 107, 0.4);
---accent-secondary: #4ECDC4;
---text-primary: #2D3436;
---text-secondary: #636E72;
---gradient-1: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
---gradient-2: linear-gradient(45deg, #F5F0D8 0%, #FFF9E3 100%);
---glass: rgba(255, 255, 255, 0.3);
---glass-border: rgba(45, 52, 54, 0.1);
---success: #00B894;
---warning: #FDCB6E;
---danger: #E17055;
+    /* Premium Dark Blue */
+    --primary: #0A1128;          /* Midnight Navy */
+    --secondary: #1A2C42;        /* Deep Sapphire */
+    
+    /* Luxury Gold Accents */
+    --accent: #FFD700;           /* Pure Gold */
+    --accent-deep: #D4AF37;      /* Rich Gold */
+    --accent-secondary: #B8860B; /* Antique Gold */
+    
+    /* Premium Text Colors */
+    --text-primary: #F0F8FF;     /* Alice Blue */
+    --text-secondary: #B0C4DE;   /* Light Steel Blue */
+    
+    /* Premium Gradients */
+    --gradient-1: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #4169E1 100%);
+    --gradient-2: linear-gradient(45deg, #1A2C42 0%, #0A1128 100%);
+    
+    /* Glass Effects */
+    --glass: rgba(26, 44, 66, 0.9);
+    --glass-border: rgba(255, 215, 0, 0.3);
+    
+    /* Status Colors */
+    --success: #00FFAB;          /* Mint Green */
+    --warning: #FFA500;          /* Orange */
+    --danger: #FF6B6B;           /* Coral Red */
+    
+    /* Section Colors */
+    --business-blue: #152238;
+    --professional-gray: #1E2F4C;
 }
 
 /* Reset & Base */
@@ -1120,3 +1134,4 @@ height: 50px;
 font-size: 1.2rem;
 }
 }
+
