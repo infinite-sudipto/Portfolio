@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: #FAF9F6;          /* Warm White */
-    --secondary: #F5F3EF;        /* Light Beige */
-    --accent: #FF6B6B;
-    --accent-deep: #FF8C00;
-    --accent-secondary: #4ECDC4;
-    --text-primary: #2D3436;
-    --text-secondary: #636E72;
-    --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
-    --gradient-2: linear-gradient(45deg, #F5F3EF 0%, #FAF9F6 100%);
-    --glass: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(45, 52, 54, 0.08);
-    --success: #00B894;
-    --warning: #FDCB6E;
-    --danger: #E17055;
-    --business-blue: #F5F7FA;    /* Light Gray */
-    --professional-gray: #F8F9FA;
+    --primary: #000000;          /* True Black */
+    --secondary: #111111;        /* Near Black */
+    --accent: #FF375F;           /* Apple Red */
+    --accent-deep: #32D74B;      /* Apple Green */
+    --accent-secondary: #0A84FF; /* Apple Blue */
+    --text-primary: #FFFFFF;
+    --text-secondary: #8E8E93;
+    --gradient-1: linear-gradient(135deg, #FF375F 0%, #0A84FF 100%);
+    --gradient-2: linear-gradient(45deg, #111111 0%, #000000 100%);
+    --glass: rgba(17, 17, 17, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --success: #32D74B;
+    --warning: #FFD60A;
+    --danger: #FF453A;
+    --business-blue: #1C1C1E;
+    --professional-gray: #2C2C2E;
 }
 
 /* Reset & Base */
@@ -1153,6 +1153,7 @@ header {
         height: 40px;
     }
 }
+
 
 
 
