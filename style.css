@@ -162,22 +162,28 @@ body {
     position: fixed;
     width: 12px;
     height: 12px;
-    border: 2px solid var(--accent);
+    border: 2px solid #FF8C00;
     border-radius: 50%;
+    pointer-events: none;
     pointer-events: none;
     z-index: 9999;
     transition: transform 0.2s ease;
+    mix-blend-mode: difference;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Add glow effect */
 }
+
 
 .cursor-follower {
     position: fixed;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 107, 107, 0.1);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 140, 0, 0.15); /* Deep yellow with transparency */
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
     transition: transform 0.4s ease;
+    mix-blend-mode: difference;
+    border: 1px solid rgba(255, 140, 0, 0.3); /* Add subtle border */
 }
 
 /* Navigation */
@@ -212,7 +218,7 @@ header {
 
 /* Optional: Add a nice hover effect */
 .nav-logo:hover {
-    color: #FFEC8B;  /* Brighter gold on hover */
+    color: #FFEC8B;  /* lighter yellow on hover */
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
@@ -1114,6 +1120,7 @@ header {
         font-size: 1.2rem;
     }
 }
+
 
 
 
