@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: #F8F9FA;
-    --secondary: #E9ECEF;
+    --primary: #0F172A;          /* Dark Navy */
+    --secondary: #1E293B;        /* Dark Slate */
     --accent: #FF6B6B;
     --accent-deep: #FF8C00;
     --accent-secondary: #4ECDC4;
-    --text-primary: #2D3436;
-    --text-secondary: #636E72;
+    --text-primary: #F1F5F9;     /* Light Gray */
+    --text-secondary: #94A3B8;   /* Medium Gray */
     --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
-    --gradient-2: linear-gradient(45deg, #E9ECEF 0%, #F8F9FA 100%);
-    --glass: rgba(255, 255, 255, 0.3);
-    --glass-border: rgba(45, 52, 54, 0.1);
+    --gradient-2: linear-gradient(45deg, #1E293B 0%, #0F172A 100%);
+    --glass: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
     --success: #00B894;
     --warning: #FDCB6E;
     --danger: #E17055;
-    --business-blue: #E3F2FD;
-    --professional-gray: #F5F7FA;
+    --business-blue: #1E3A8A;    /* Dark Blue */
+    --professional-gray: #1E293B;
 }
 
 /* Reset & Base */
@@ -1153,5 +1153,6 @@ header {
         height: 40px;
     }
 }
+
 
 
