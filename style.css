@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: #EFF5FF;          /* Very Light Blue */
-    --secondary: rgba(255, 255, 255, 0.7); /* Transparent White */
-    --accent: #7B68EE;           /* Medium Purple */
-    --accent-deep: #00CED1;      /* Dark Turquoise */
-    --accent-secondary: #FF69B4; /* Hot Pink */
-    --text-primary: #2C3E50;
-    --text-secondary: #7F8C8D;
-    --gradient-1: linear-gradient(135deg, #7B68EE 0%, #00CED1 50%, #FF69B4 100%);
-    --gradient-2: linear-gradient(45deg, rgba(255, 255, 255, 0.7) 0%, rgba(239, 245, 255, 0.9) 100%);
-    --glass: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --success: #27AE60;
-    --warning: #F39C12;
-    --danger: #E74C3C;
-    --business-blue: rgba(123, 104, 238, 0.1);
-    --professional-gray: rgba(52, 152, 219, 0.1);
+    --primary: #1A1A1A;          /* Dark Charcoal */
+    --secondary: #2D2D2D;        /* Dark Gray */
+    --accent: #FFD700;           /* Gold */
+    --accent-deep: #C5A572;      /* Rose Gold */
+    --accent-secondary: #B8860B; /* Dark Gold */
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --gradient-1: linear-gradient(135deg, #FFD700 0%, #C5A572 50%, #B8860B 100%);
+    --gradient-2: linear-gradient(45deg, #2D2D2D 0%, #1A1A1A 100%);
+    --glass: rgba(45, 45, 45, 0.9);
+    --glass-border: rgba(255, 215, 0, 0.3);
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --danger: #F44336;
+    --business-blue: #252525;
+    --professional-gray: #333333;
 }
 
 /* Reset & Base */
@@ -1153,6 +1153,7 @@ header {
         height: 40px;
     }
 }
+
 
 
 
