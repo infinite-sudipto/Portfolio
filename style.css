@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --primary: #0A1929;
-    --secondary: #112240;
-    --accent: #64DFDF;
-    --accent-glow: rgba(100, 223, 223, 0.5);
-    --accent-secondary: #6930C3;
-    --text-primary: #E6F1FF;
-    --text-secondary: #8892B0;
-    --gradient-1: linear-gradient(135deg, #64DFDF 0%, #6930C3 50%, #5E60CE 100%);
-    --gradient-2: linear-gradient(45deg, #112240 0%, #0A1929 100%);
-    --glass: rgba(17, 34, 64, 0.5);
-    --glass-border: rgba(100, 223, 223, 0.2);
-    --success: #4CC9F0;
-    --warning: #F8961E;
-    --danger: #F72585;
+    --primary: #2D1B2E;
+    --secondary: #3E2A3F;
+    --accent: #FF85A2;
+    --accent-glow: rgba(255, 133, 162, 0.5);
+    --accent-secondary: #A3BFA3;
+    --text-primary: #F5E9F5;
+    --text-secondary: #D8C3D8;
+    --gradient-1: linear-gradient(135deg, #FF85A2 0%, #A3BFA3 50%, #8AA2A9 100%);
+    --gradient-2: linear-gradient(45deg, #3E2A3F 0%, #2D1B2E 100%);
+    --glass: rgba(62, 42, 63, 0.5);
+    --glass-border: rgba(255, 133, 162, 0.25);
+    --success: #A3BFA3;
+    --warning: #FFD166;
+    --danger: #EF476F;
 }
 
 /* Reset & Base */
@@ -1120,6 +1120,7 @@ height: 50px;
 font-size: 1.2rem;
 }
 }
+
 
 
 
