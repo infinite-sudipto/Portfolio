@@ -1,22 +1,35 @@
 current code: @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: #1A1A1A;          /* Dark Charcoal */
-    --secondary: #2D2D2D;        /* Dark Gray */
-    --accent: #FFD700;           /* Gold */
-    --accent-deep: #C5A572;      /* Rose Gold */
-    --accent-secondary: #B8860B; /* Dark Gold */
-    --text-primary: #FFFFFF;
-    --text-secondary: #CCCCCC;
-    --gradient-1: linear-gradient(135deg, #FFD700 0%, #C5A572 50%, #B8860B 100%);
-    --gradient-2: linear-gradient(45deg, #2D2D2D 0%, #1A1A1A 100%);
-    --glass: rgba(45, 45, 45, 0.9);
-    --glass-border: rgba(255, 215, 0, 0.3);
-    --success: #4CAF50;
-    --warning: #FFC107;
-    --danger: #F44336;
-    --business-blue: #252525;
-    --professional-gray: #333333;
+    /* Warm Black */
+    --primary: #1A1818;          /* Warm Black */
+    --secondary: #2C2828;        /* Charcoal */
+    
+    /* Bronze Accents */
+    --accent: #CD7F32;           /* Bronze */
+    --accent-deep: #B87333;      /* Copper */
+    --accent-secondary: #8B4513; /* Saddle Brown */
+    
+    /* Text Colors */
+    --text-primary: #FFF8DC;     /* Cornsilk */
+    --text-secondary: #D2B48C;   /* Tan */
+    
+    /* Gradients */
+    --gradient-1: linear-gradient(135deg, #CD7F32 0%, #B87333 50%, #8B4513 100%);
+    --gradient-2: linear-gradient(45deg, #2C2828 0%, #1A1818 100%);
+    
+    /* Glass Effects */
+    --glass: rgba(44, 40, 40, 0.9);
+    --glass-border: rgba(205, 127, 50, 0.4);
+    
+    /* Status Colors */
+    --success: #32CD32;          /* Lime Green */
+    --warning: #FFD700;          /* Gold */
+    --danger: #DC143C;           /* Crimson */
+    
+    /* Section Colors */
+    --business-blue: #242020;
+    --professional-gray: #302C2C;
 }
 
 /* Reset & Base */
@@ -1153,3 +1166,4 @@ header {
         height: 40px;
     }
 }
+
