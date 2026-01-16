@@ -1,20 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --primary: #2D1B2E;
-    --secondary: #3E2A3F;
-    --accent: #FF85A2;
-    --accent-glow: rgba(255, 133, 162, 0.5);
-    --accent-secondary: #A3BFA3;
-    --text-primary: #F5E9F5;
-    --text-secondary: #D8C3D8;
-    --gradient-1: linear-gradient(135deg, #FF85A2 0%, #A3BFA3 50%, #8AA2A9 100%);
-    --gradient-2: linear-gradient(45deg, #3E2A3F 0%, #2D1B2E 100%);
-    --glass: rgba(62, 42, 63, 0.5);
-    --glass-border: rgba(255, 133, 162, 0.25);
-    --success: #A3BFA3;
-    --warning: #FFD166;
-    --danger: #EF476F;
+    --primary: #2A1A1A;      /* Great - deep warm black */
+    --secondary: #4A2A2A;    /* Good - consider #3D2323 for better contrast */
+    --accent: #FF6B35;       /* Excellent - vibrant but not overwhelming */
+    --accent-glow: rgba(255, 107, 53, 0.4); /* Perfect opacity */
+    --accent-secondary: #FFD166; /* Good - might consider #FFB347 for smoother gradient */
+    --text-primary: #FFF3E0; /* Great - warm off-white */
+    --text-secondary: #FFE0B2; /* Good - maybe #E6D2B5 for better readability */
+    
+    /* Gradient 1 has a sharp transition - consider: */
+    --gradient-1: linear-gradient(135deg, 
+        #FF6B35 0%, 
+        #FF9A3D 25%, 
+        #FFD166 50%, 
+        #4ECDC4 75%, 
+        #06D6A0 100%);
+    
+    --gradient-2: linear-gradient(45deg, #4A2A2A 0%, #2A1A1A 100%); /* Perfect */
+    --glass: rgba(74, 42, 42, 0.6); /* Good */
+    --glass-border: rgba(255, 107, 53, 0.2); /* Good */
+    --success: #06D6A0; /* Good - consider #2ECC71 for better harmony */
+    --warning: #FFD166; /* Good */
+    --danger: #EF476F; /* Consider #E74C3C to match warm theme better */
 }
 
 /* Reset & Base */
@@ -1120,6 +1128,7 @@ height: 50px;
 font-size: 1.2rem;
 }
 }
+
 
 
 
